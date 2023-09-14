@@ -1,0 +1,79 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { following } from "../../redux/userSlice";
+
+const AllUsers = () => {
+	const [users, setUsers] = useState([]);
+	const { currentUser } = useSelector((state) => state.user);
+	const { id } = useParams();
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		const fetchUsers = async () => {
+			try {
+				const response = await axios.get(
+					"https://twitter-api-xgoy.onrender.com/api/users/usersAll"
+				);
+				setUsers(response.data);
+			} catch (error) {
+				console.error("Error fetching users:", error);
+			}
+		};
+
+		fetchUsers();
+	}, []);
+
+	const handleFollow = async (userId) => {
+		try {
+			if (!currentUser.following.includes(userId)) {
+				const follow = await axios.put(
+					`https://twitter-api-xgoy.onrender.com/api/users/follow/${userId}`,
+					{
+						id: currentUser._id,
+					}
+				);
+				dispatch(following(userId));
+			} else {
+				const unfollow = await axios.put(
+					`https://twitter-api-xgoy.onrender.com/api/users/unfollow/${userId}`,
+					{
+						id: currentUser._id,
+					}
+				);
+				dispatch(following(userId));
+			}
+		} catch (err) {
+			console.log("error", err);
+		}
+	};
+
+	return (
+		<div>
+			<h2 className="text-2xl font-semibold mb-4">All Users</h2>
+			<ul>
+				{users.map((user) => (
+					<li
+						key={user._id}
+						className="flex items-center mb-2 p-2 bg-gray-100 rounded-lg"
+					>
+						<span className="text-lg font-semibold">{user.username}</span>
+						{currentUser._id !== user._id && ( // Exclude current user from follow buttons
+							<button
+								className={`px-4 py-2 ml-2 bg-blue-500 rounded-full text-white`}
+								onClick={() => handleFollow(user._id)} // Pass user's ID to handleFollow
+							>
+								{currentUser.following.includes(user._id)
+									? "Following"
+									: "Follow"}
+							</button>
+						)}
+					</li>
+				))}
+			</ul>
+		</div>
+	);
+};
+
+export default AllUsers;
