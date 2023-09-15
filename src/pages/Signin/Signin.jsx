@@ -96,7 +96,7 @@ const SignInForm = () => {
 					<div>
 						Don't have an account
 						<button
-							className="text-l py-1 rounded-full px-4 bg-blue-400 text-white ml-2"
+							className="text-l py-1 rounded-full px-4 bg-blue-500 text-white ml-2"
 							onClick={handleSignUpClick}
 						>
 							Sign up
