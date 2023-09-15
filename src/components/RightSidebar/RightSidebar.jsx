@@ -57,17 +57,18 @@ const AllUsers = () => {
 				{users.map((user) => (
 					<li
 						key={user._id}
-						className="flex items-center mb-2 p-2 bg-gray-100 rounded-lg"
+						className="flex items-center mb-4 p-2 bg-gray-100 rounded-lg justify-between "
+						style={{ width: "15vw" }}
 					>
 						<span className="text-lg font-semibold">{user.username}</span>
-						{currentUser._id !== user._id && ( // Exclude current user from follow buttons
+						{currentUser._id !== user._id && (
 							<button
 								className={
 									!currentUser.following.includes(user._id)
 										? `px-4 py-2 ml-2 bg-blue-500 rounded-full text-white`
 										: "px-4 py-2 ml-2 bg-gray-500 rounded-full text-white"
 								}
-								onClick={() => handleFollow(user._id)} // Pass user's ID to handleFollow
+								onClick={() => handleFollow(user._id)}
 							>
 								{currentUser.following.includes(user._id)
 									? "Following"
