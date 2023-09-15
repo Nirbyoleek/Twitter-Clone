@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
-import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import formatDistance from "date-fns/formatDistance";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -118,11 +118,7 @@ const Tweet = ({ tweet, setData }) => {
 			{userData && (
 				<>
 					<div className="flex space-x-2">
-						<Link
-							to={`https://twitter-api-xgoy.onrender.com/api/profile/${userData._id}`}
-						>
-							<h3 className="font-bold">{userData.username}</h3>
-						</Link>
+						<h3 className="font-bold">{userData.username}</h3>
 
 						<span className="font-normal">@{userData.username}</span>
 						<p> - {dateStr}</p>
@@ -148,9 +144,9 @@ const Tweet = ({ tweet, setData }) => {
 					<div className="flex justify-between">
 						<button onClick={handleLike}>
 							{tweet.likes.includes(currentUser._id) ? (
-								<ThumbUpAltIcon className="text-blue-500 mr-2 my-2 cursor-pointer" />
+								<FavoriteIcon className="text-blue-500 mr-2 my-2 cursor-pointer" />
 							) : (
-								<ThumbUpAltOutlinedIcon className="mr-2 my-2 cursor-pointer" />
+								<FavoriteBorderIcon className="mr-2 my-2 cursor-pointer" />
 							)}
 							{tweet.likes.length}
 						</button>

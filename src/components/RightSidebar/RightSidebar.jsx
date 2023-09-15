@@ -44,6 +44,7 @@ const AllUsers = () => {
 				);
 				dispatch(following(userId));
 			}
+			window.location.reload();
 		} catch (err) {
 			console.log("error", err);
 		}
@@ -61,7 +62,11 @@ const AllUsers = () => {
 						<span className="text-lg font-semibold">{user.username}</span>
 						{currentUser._id !== user._id && ( // Exclude current user from follow buttons
 							<button
-								className={`px-4 py-2 ml-2 bg-blue-500 rounded-full text-white`}
+								className={
+									!currentUser.following.includes(user._id)
+										? `px-4 py-2 ml-2 bg-blue-500 rounded-full text-white`
+										: "px-4 py-2 ml-2 bg-gray-500 rounded-full text-white"
+								}
 								onClick={() => handleFollow(user._id)} // Pass user's ID to handleFollow
 							>
 								{currentUser.following.includes(user._id)
