@@ -75,12 +75,11 @@ const Tweet = ({ tweet, setData }) => {
 			const editedTweet = await axios.put(
 				`https://twitter-api-xgoy.onrender.com/api/tweets/${tweet._id}`,
 				{
-					userId: currentUser._id, // Include the user ID to check permission
+					userId: currentUser._id,
 					description: editedDescription,
 				}
 			);
 
-			// Update the UI with the edited tweet data
 			setData((prevData) =>
 				prevData.map((item) =>
 					item._id === tweet._id
@@ -106,7 +105,6 @@ const Tweet = ({ tweet, setData }) => {
 				}
 			);
 
-			// Remove the deleted tweet from the UI
 			setData((prevData) => prevData.filter((item) => item._id !== tweetId));
 		} catch (error) {
 			console.error(error);
@@ -114,7 +112,7 @@ const Tweet = ({ tweet, setData }) => {
 	};
 
 	return (
-		<div>
+		<div className="">
 			{userData && (
 				<>
 					<div className="flex space-x-2">

@@ -21,11 +21,10 @@ const ExploreTweets = () => {
 		fetchData();
 	}, [currentUser._id]);
 
-	// Sort tweets by creation date in descending order
 	const sortedExploreTweets = explore?.slice().sort((a, b) => {
 		const dateA = new Date(a.createdAt);
 		const dateB = new Date(b.createdAt);
-		return dateB - dateA; // Sort in descending order (latest first)
+		return dateB - dateA;
 	});
 
 	return (

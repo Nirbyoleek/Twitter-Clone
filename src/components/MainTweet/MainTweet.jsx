@@ -28,7 +28,7 @@ const MainTweet = () => {
 	return (
 		<div>
 			{currentUser && (
-				<p className="font-bold text-2xl pl-2 my-2">{currentUser.username}</p>
+				<p className="font-bold text-2xl pl-2 my-2 ">{currentUser.username}</p>
 			)}
 
 			<form className="border-b-2 pb-6">
