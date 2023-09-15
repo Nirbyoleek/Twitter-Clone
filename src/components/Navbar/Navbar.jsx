@@ -40,7 +40,7 @@ const Navbar = () => {
 			</div>
 			<Link to="signin">
 				<button
-					className="ml-4 bg-red-500 px-4 py-2 text-white rounded-full"
+					className="ml-20 bg-red-500 px-4 py-2 text-white rounded-full"
 					onClick={handleLogout}
 				>
 					Logout
