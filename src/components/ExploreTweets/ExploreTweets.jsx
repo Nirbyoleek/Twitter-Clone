@@ -30,7 +30,7 @@ const ExploreTweets = () => {
 
 	return (
 		<div className="mt-6">
-			<h2 className="text-bold text-xl">Explore Tweets</h2>
+			<h2 className="text-bold text-xl font-bold mb-4">Explore Tweets</h2>
 			{sortedExploreTweets?.map((tweet) => {
 				return (
 					<div key={tweet._id} className="p-2">
