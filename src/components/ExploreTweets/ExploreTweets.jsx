@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import axios from "axios";
 import { useSelector } from "react-redux";
 import Tweet from "../Tweet/Tweet";
@@ -21,17 +20,24 @@ const ExploreTweets = () => {
 		};
 		fetchData();
 	}, [currentUser._id]);
+
+	// Sort tweets by creation date in descending order
+	const sortedExploreTweets = explore?.slice().sort((a, b) => {
+		const dateA = new Date(a.createdAt);
+		const dateB = new Date(b.createdAt);
+		return dateB - dateA; // Sort in descending order (latest first)
+	});
+
 	return (
 		<div className="mt-6">
 			<h2 className="text-bold text-xl">Explore Tweets</h2>
-			{explore &&
-				explore.map((tweet) => {
-					return (
-						<div key={tweet._id} className="p-2">
-							<Tweet tweet={tweet} setData={setExplore} />
-						</div>
-					);
-				})}
+			{sortedExploreTweets?.map((tweet) => {
+				return (
+					<div key={tweet._id} className="p-2">
+						<Tweet tweet={tweet} setData={setExplore} />
+					</div>
+				);
+			})}
 		</div>
 	);
 };

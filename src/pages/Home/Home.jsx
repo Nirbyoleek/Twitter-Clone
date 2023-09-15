@@ -17,11 +17,11 @@ const Home = () => {
 			) : (
 				<div>
 					<Navbar />
-					<div className="grid grid-cols-1 md:grid-cols-4">
-						<div className="px-6">
+					<div className="flex justify-center">
+						<div className="px-6" style={{ marginLeft: "-8vw" }}>
 							<LeftSidebar />
 						</div>
-						<div className="col-span-2 border-x-2 border-t-slate-800 px-6">
+						<div className="main-tweet-wrapper" style={{ width: "40vw" }}>
 							<MainTweet />
 						</div>
 						<div className="px-6">
