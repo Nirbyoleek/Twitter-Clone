@@ -11,7 +11,7 @@ import Error from "./pages/Error/Error";
 
 const Layout = () => {
 	return (
-		<div className="md:w-8/12 flex mx-auto ">
+		<div className=" flex mx-auto ">
 			<Outlet></Outlet>
 		</div>
 	);
