@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# 🐦 Twitter-Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, full-stack Twitter clone built with React, Redux, Node.js, Express, and MongoDB. Experience real-time tweeting, authentication, profile management, and a beautiful, responsive UI inspired by Twitter.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+- 📝 **Sign Up & Sign In** (Gmail only, with validation)
+- 🔒 **JWT Authentication**
+- 🐦 **Tweet, Like, and Explore**
+- 🏠 **Personalized Home Feed**
+- 🔍 **Trending Topics & Explore Page**
+- 👤 **User Profiles & Follow System**
+- 🌙 **Dark Mode** (manual or system-based)
+- ⚡ **Skeleton Loaders & Animations**
+- 📱 **Responsive Design**
+- ☁️ **Deployed on Render**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tech Stack
 
-### `npm test`
+- **Frontend:** React, Redux, Tailwind CSS, Framer Motion, Material-UI
+- **Backend:** Node.js, Express, MongoDB, JWT
+- **Other:** Axios, react-hot-toast, react-loading-skeleton
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🖥️ Screenshots
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Login Page
+![Login Page](public/screenshot-1.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Home Page
+![Home Page](public/screenshot-2.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🏗️ Local Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/Nirbyoleek/Twitter-Clone.git
+   cd Twitter-Clone
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   cd server && npm install && cd ..
+   ```
+3. **Set up environment variables:**
+   - Create a `.env` file in `/server` with your MongoDB URI and JWT secret:
+     ```env
+     MONGO_URL=your_mongodb_connection_string
+     JWT_SECRET=your_jwt_secret
+     ```
+4. **Run the backend:**
+   ```bash
+   cd server
+   npm start
+   ```
+5. **Run the frontend:**
+   ```bash
+   npm start
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🌍 Deployment (Render)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- The app is ready for deployment on [Render](https://render.com/).
+- **Node.js 18+ is required** (see `package.json` engines field).
+- Push your code to GitHub and connect your repo on Render.
+- Set environment variables in the Render dashboard for the backend.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## ⚙️ Environment Variables
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `MONGO_URL` — MongoDB connection string
+- `JWT_SECRET` — JWT secret key
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🙏 Credits
 
-### Analyzing the Bundle Size
+- Inspired by [Twitter](https://twitter.com)
+- UI: [Tailwind CSS](https://tailwindcss.com/), [Material-UI](https://mui.com/), [Framer Motion](https://www.framer.com/motion/)
+- Backend: [Express](https://expressjs.com/), [MongoDB](https://www.mongodb.com/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 📄 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is for educational purposes. Feel free to fork and build upon it!
