@@ -1,8 +1,9 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import TagIcon from "@mui/icons-material/Tag";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../redux/userSlice";
 import { motion } from "framer-motion";
 
 const navItems = [
@@ -26,6 +27,13 @@ const fadeInLeft = {
 const LeftSidebar = () => {
   const { currentUser } = useSelector((state) => state.user);
   const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/signin");
+  };
 
   return (
     <motion.div
@@ -75,7 +83,7 @@ const LeftSidebar = () => {
             <div className="text-xs text-gray-500 truncate">@{currentUser.username || "username"}</div>
           </div>
           {/* Placeholder for logout or settings */}
-          <button className="ml-2 px-3 py-1 text-xs font-bold text-blue-600 bg-white border border-blue-200 rounded-full hover:bg-blue-100 transition">Logout</button>
+          <button onClick={handleLogout} className="ml-2 px-3 py-1 text-xs font-bold text-blue-600 bg-white border border-blue-200 rounded-full hover:bg-blue-100 transition">Logout</button>
         </motion.div>
       )}
     </motion.div>

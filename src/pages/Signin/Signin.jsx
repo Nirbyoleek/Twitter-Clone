@@ -70,6 +70,15 @@ const SignInForm = () => {
 		setPasswordError("");
 		setError("");
 
+		// Gmail-only validation if input contains '@'
+		if (username.includes("@")) {
+			const gmailRegex = /^[A-Za-z0-9._%+-]+@gmail\.com$/;
+			if (!gmailRegex.test(username)) {
+				setUsernameError("Only Gmail addresses are allowed (e.g., yourname@gmail.com)");
+				return;
+			}
+		}
+
 		if (!username) {
 			setUsernameError("Username is required");
 			return;
