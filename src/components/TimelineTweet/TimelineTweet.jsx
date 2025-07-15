@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import Tweet from "../Tweet/Tweet";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const TimelineTweet = () => {
 	const [timeLine, setTimeLine] = useState(null);
@@ -44,20 +46,28 @@ const TimelineTweet = () => {
 	};
 
 	return (
-		<div className="mt-6">
-			<h1 className="text-xl mb-6 font-bold">Tweets</h1>
-			{timeLine &&
-				timeLine.map((tweet) => {
-					return (
-						<div key={tweet._id} className="p-2">
-							<Tweet
-								tweet={tweet}
-								setData={setTimeLine}
-								onDelete={handleDeleteTweet}
-							/>
+		<div className="mt-8">
+			<h1 className="text-2xl font-extrabold mb-8 text-blue-700 tracking-tight">Timeline</h1>
+			<div className="space-y-6">
+				{timeLine === null
+					? Array.from({ length: 4 }).map((_, i) => (
+						<div key={i} className="bg-white/80 rounded-2xl shadow-md p-5 mb-4">
+							<Skeleton circle height={48} width={48} className="mb-2" />
+							<Skeleton height={20} width={120} className="mb-1" />
+							<Skeleton height={16} width={80} className="mb-2" />
+							<Skeleton count={2} height={16} className="mb-2" />
+							<Skeleton height={32} width={80} />
 						</div>
-					);
-				})}
+					))
+					: timeLine.map((tweet) => (
+						<Tweet
+							key={tweet._id}
+							tweet={tweet}
+							setData={setTimeLine}
+							onDelete={handleDeleteTweet}
+						/>
+					))}
+			</div>
 		</div>
 	);
 };

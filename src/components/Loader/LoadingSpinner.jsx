@@ -1,37 +1,14 @@
 import React from "react";
-import { Box, CircularProgress, Paper } from "@mui/material";
 
 const LoadingSpinner = () => (
-	<Box
-		sx={{
-			position: "fixed",
-			top: 0,
-			left: 0,
-			width: "100vw",
-			height: "100vh",
-			display: "flex",
-			alignItems: "center",
-			justifyContent: "center",
-			zIndex: 2000,
-			background: "rgba(30, 41, 59, 0.35)",
-			backdropFilter: "blur(2px)",
-		}}
-	>
-		<Paper
-			elevation={8}
-			sx={{
-				p: 4,
-				borderRadius: "50%",
-				background: "rgba(255,255,255,0.85)",
-				display: "flex",
-				alignItems: "center",
-				justifyContent: "center",
-				boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
-			}}
-		>
-			<CircularProgress size={64} thickness={4.5} sx={{ color: "#1da1f2" }} />
-		</Paper>
-	</Box>
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-blue-200/60 via-white/60 to-purple-200/60 backdrop-blur-sm animate-pulse">
+    <div className="p-8 rounded-full bg-white/80 shadow-2xl flex items-center justify-center border-4 border-blue-100">
+      <svg className="animate-spin h-16 w-16 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+      </svg>
+    </div>
+  </div>
 );
 
 export default LoadingSpinner;

@@ -1,53 +1,47 @@
-import React, { useState } from "react";
-
-import { Link } from "react-router-dom";
-
-import { useLocation } from "react-router-dom";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import UserPlaceholder from "../UserPlaceholder/UserPlaceholder";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/userSlice";
 
 const Navbar = () => {
-	const [userData, setUserData] = useState(null);
-	const location = useLocation().pathname;
-	const dispatch = useDispatch();
-	const handleLogout = () => {
-		dispatch(logout());
-	};
-	return (
-		<div className="grid grid-cols-1 md:grid-cols-4 my-5 justify-center">
-			<div className="mx-auto md:mx-0">
-				<img
-					src="/twitter-logo.png"
-					alt="Twitter Logo"
-					width={"40px"}
-					className="ml-8"
-				/>
-			</div>
-
-			<div className="col-span-2 md:border-x-2  md:px-6 my-6 md:my-0">
-				<div className="flex justify-between items-center">
-					<h2 className="font-bold text-2xl">
-						{location.includes("profile") ? (
-							<UserPlaceholder setUserData={setUserData} userData={userData} />
-						) : location.includes("explore") ? (
-							"Explore"
-						) : (
-							"Home"
-						)}
-					</h2>
-				</div>
-			</div>
-			<Link to="signin">
-				<button
-					className="ml-20 bg-red-500 px-4 py-2 text-white rounded-full"
-					onClick={handleLogout}
-				>
-					Logout
-				</button>
-			</Link>
-		</div>
-	);
+  const location = useLocation().pathname;
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+  return (
+    <nav className="sticky top-0 z-40 w-full bg-white/80 backdrop-blur shadow-sm border-b border-blue-100">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+        {/* Logo */}
+        <Link to="/" className="flex items-center space-x-2">
+          <img src="/twitter-logo.png" alt="Twitter Logo" className="w-10 h-10" />
+          {/* <span className="text-xl font-extrabold text-blue-500 tracking-tight">Chirp</span> */}
+        </Link>
+        {/* Page Title */}
+        <div className="flex-1 flex justify-center">
+          <h2 className="font-bold text-2xl text-blue-700">
+            {location.includes("profile") ? (
+              <UserPlaceholder />
+            ) : location.includes("explore") ? (
+              "Explore"
+            ) : (
+              "Home"
+            )}
+          </h2>
+        </div>
+        {/* Logout Button */}
+        <Link to="/signin">
+          <button
+            className="bg-red-500 px-5 py-2 text-white rounded-full font-semibold shadow hover:bg-red-600 transition"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        </Link>
+      </div>
+    </nav>
+  );
 };
 
 export default Navbar;
